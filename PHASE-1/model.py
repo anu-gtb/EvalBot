@@ -55,7 +55,6 @@ def preprocess(data):
 def predict_score_and_accuracy(data):
     device=torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     marks_obtained=[]
-    similarities=[]
     sent_pairs=preprocess(data)
     for sent1,sent2 in sent_pairs:
         input_ids,attention_mask=tokenization(sent1,sent2)
@@ -69,28 +68,9 @@ def predict_score_and_accuracy(data):
             accuracy=torch.argmax(logits,dim=1).item()
             if accuracy==0:
                 avg_marks=torch.min(mark_obtained).item()
-                if avg_marks>3:
-                    accuracy='High'
-                elif avg_marks==3:
-                    accuracy='Medium'
-                elif avg_marks<3:
-                    accuracy='Low'
             elif accuracy==1:
                 avg_marks=torch.mean(mark_obtained).item()
-                if avg_marks>3:
-                    accuracy='High'
-                elif avg_marks==3:
-                    accuracy='Medium'
-                elif avg_marks<3:
-                    accuracy='Low'
             elif accuracy==2:
                 avg_marks=torch.max(mark_obtained).item()
-                if avg_marks>3:
-                    accuracy='High'
-                elif avg_marks==3:
-                    accuracy='Medium'
-                elif avg_marks<3:
-                    accuracy='Low'
-        similarities.append(accuracy)
         marks_obtained.append(avg_marks)
-    return similarities,marks_obtained
+    return marks_obtained

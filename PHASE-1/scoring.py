@@ -43,7 +43,6 @@ max_marks=pd.DataFrame()
 max_marks['Student File No.']=[i+1 for i in range(0,len(answers_by_student))]
 max_marks['Maximum Marks']=[5 for i in range(0,len(answers_by_student))]
 marks['Marks Obtained']=['-' for i in range(0,len(answers_by_student))]
-marks['Accuracy']=['-' for i in range(0,len(answers_by_student))]
 
 button1_clicked=st.session_state.get('button1_clicked',False)
 button1=st.button('Next',disabled=button1_clicked)
@@ -67,10 +66,8 @@ if st.session_state.table:
 ## if button2 clicked...
 if button2:
    for i in range(0,len(max_marks['Student File No.'])):
-         marks['Marks Obtained'][i]=int(round(predict_score_and_accuracy(dataframe(answers,answers_by_student))[1][i]*max_marks['Maximum Marks'][i],0))
-   marks['Accuracy']=predict_score_and_accuracy(dataframe(answers,answers_by_student))[0]
+         marks['Marks Obtained'][i]=int(round(predict_score_and_accuracy(dataframe(answers,answers_by_student))[i]*max_marks['Maximum Marks'][i],0))
    max_marks['Marks Obtained']=marks['Marks Obtained']
-   max_marks['Accuracy']=marks['Accuracy']
    st.table(max_marks)## Output after clicking 'Find Score' button
    st.write('Total Marks Obtained : ',max_marks['Marks Obtained'].sum())## Print total marks obtained
    

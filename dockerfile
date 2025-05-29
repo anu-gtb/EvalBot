@@ -1,14 +1,14 @@
 FROM python:3.12-alpine
 
-WORKDIR /app
+WORKDIR /scoring
 
-COPY requirements.txt /app/
+COPY scoring.py /app/
 
 RUN pip install -r requirements.txt
 
-COPY model2/ /app/
-COPY model.py /app/
-COPY scoring.py /app/
+#COPY model2/ /app/
+#COPY model.py /app/
+#COPY scoring.py /app/
 
 EXPOSE 8501
 

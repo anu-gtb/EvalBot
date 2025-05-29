@@ -9,7 +9,7 @@ from transformers import BertTokenizer,BertForSequenceClassification
 ## Loading BERT Tokenizer and Model
 model_name='bert-base-uncased'
 tokenizer=BertTokenizer.from_pretrained(model_name)
-model=BertForSequenceClassification.from_pretrained(r'C:\Users\DELL\Documents\MAJOR PROJECT\model')
+model=BertForSequenceClassification.from_pretrained(r'C:\Users\DELL\Documents\MAJOR PROJECT\model2')
 
 ## Text Cleaning methods
 def remove_special_characters(text):

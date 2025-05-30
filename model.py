@@ -4,12 +4,13 @@ import nltk
 from nltk.corpus import stopwords
 nltk.download('stopwords')
 import torch
+#from transformers import AutoTokenizer,AutoModelForSequenceClassification
 from transformers import BertTokenizer,BertForSequenceClassification
 
 ## Loading BERT Tokenizer and Model
-model_name='bert-base-uncased'
-tokenizer=BertTokenizer.from_pretrained(model_name)
-model=BertForSequenceClassification.from_pretrained(r'C:\Users\DELL\Documents\MAJOR PROJECT\model2')
+model_name='aryashukla/evalbot'  
+tokenizer=BertTokenizer.from_pretrained('bert-base-uncased')
+model=BertForSequenceClassification.from_pretrained(model_name)
 
 ## Text Cleaning methods
 def remove_special_characters(text):

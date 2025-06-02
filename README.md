@@ -14,4 +14,4 @@
 
 -----
 
-`deployment.yaml` -> deployment of docker image to DockerHub
+`.github/workflows/deployment.yaml` -> deployment of docker image to DockerHub
